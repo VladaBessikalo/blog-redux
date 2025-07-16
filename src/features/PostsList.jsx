@@ -27,7 +27,7 @@ const PostsList = () => {
       content = <p>{error}</p>
     }
 
-    console.log(posts.map(post => post.id)); 
+    console.log(posts); 
  
   return (
     <section>
