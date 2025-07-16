@@ -5,8 +5,8 @@ import AddPostForm from "./features/AddPostForm";
 function App() {
   return (
     <main className="App">
-      <PostsList/>
       <AddPostForm/>
+      <PostsList/>
     </main>
   );
 }

@@ -1,31 +1,33 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { selectAllPosts, getPostsStatus, getPostsError, fetchPosts} from "./postSlice";
-import PostsExerpt from "./PostsExerpt";
+import PostsExcerpt from "./PostsExcerpt";
 
 
 const PostsList = () => {
     const dispatch = useDispatch();
 
     const posts = useSelector(selectAllPosts);
-    const postsStatus = useSelector(getPostsStatus);
+    const postStatus = useSelector(getPostsStatus);
     const error = useSelector(getPostsError);
 
     useEffect(() => {
-      if (postsStatus === 'idle') {
+      if (postStatus === 'idle') {
         dispatch(fetchPosts())
       }
-    }, [postsStatus, dispatch])
+    }, [postStatus, dispatch])
 
     let content;
-    if(postsStatus === 'loading') {
+    if(postStatus === 'loading') {
       content = <p> "Loading..." </p> // or spinner component
-    } else if (postsStatus === 'succeeded') {
+    } else if (postStatus === 'succeeded') {
       const orderedPosts = posts.slice().sort((a, b) => b.date.localeCompare(a.date))
-      content = orderedPosts.map(post => <PostsExerpt key={post.id} post={post}/>)
-    } else if (postsStatus === 'failed') {
+      content = orderedPosts.map(post => <PostsExcerpt key={post.id} post={post}/>)
+    } else if (postStatus === 'failed') {
       content = <p>{error}</p>
     }
+
+    console.log(posts.map(post => post.id)); 
  
   return (
     <section>
@@ -34,5 +36,6 @@ const PostsList = () => {
     </section>
   )
 }
+
 
 export default PostsList
