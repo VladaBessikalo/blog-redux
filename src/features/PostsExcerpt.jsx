@@ -10,6 +10,7 @@ const PostsExcerpt = ({ post }) => {
       <p className="excerpt">{post.content}</p>
 
       <p>
+        <Link to={`post/${post.id}`}>View Post </Link>
         <PostAuthor userId={post.userId} />
         <TimeAgo timestamp={post.date} />
       </p>
