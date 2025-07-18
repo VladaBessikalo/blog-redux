@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewPost } from "./postSlice";
 import { selectAllUsers } from "./users/usersSlice";
+import { useNavigate } from "react-router-dom";
 
 const AddPostForm = () => {
   const [title, setTitle] = useState("");
@@ -18,6 +19,7 @@ const AddPostForm = () => {
   const canSave = [title, content, userId].every(Boolean) && addRequestStatus === 'idle';
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onSavePostClick = () => {
     if (canSave) {
@@ -27,6 +29,7 @@ const AddPostForm = () => {
         setTitle('');
         setContent('');
         setUserId('');
+        navigate('/')
       } catch (err) {
         console.error('Failed to save post', err);
       } finally {
