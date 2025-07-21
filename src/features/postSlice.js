@@ -151,6 +151,7 @@ export const {
   selectAll: selectAllPosts,
   selectById: selectPostById,
   selectIds: selectPostIds
+  // pass in a selector that returns the posts slice of state
 } = postsAdapter.getSelectors(state => state.posts)
 
 export const getPostsStatus = (state) => state.posts.status;
