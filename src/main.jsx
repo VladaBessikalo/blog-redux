@@ -19,3 +19,5 @@ createRoot(document.getElementById('root')).render(
       </Router>
     </Provider>
 )
+
+console.log(store.getState())
