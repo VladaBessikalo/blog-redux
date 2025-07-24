@@ -10,7 +10,7 @@ const PostsList = () => {
 
     let content;
     if(postStatus === 'loading') {
-      content = <p> "Loading..." </p> // or spinner component
+      content = <p> Loading... </p> // or spinner component
     } else if (postStatus === 'succeeded') {
       content = orderedPostsIds.map(postId => <PostsExcerpt key={postId} postId={postId}/>)
     } else if (postStatus === 'failed') {
