@@ -39,4 +39,7 @@ export const selectAllUsers = (state) => state.users.users;
 export const selectUserById = (state, userId) =>
   state.users.users.find((user) => user.id === userId);
 
+export const selectUsersStatus = (state) => state.users.status;
+export const selectUsersError = (state) => state.users.error;
+
 export default usersSlice.reducer;
